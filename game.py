@@ -7,18 +7,16 @@ class Game:
         self.gestures = ["Rock", "Paper", "Scissor", "Lizard", "Spock"]
 
     def welcome_message(self):
-        pass
-        # display rules
         print(
-            "Rock crushes Scissors\nScissors cuts Paper\nPaper covers Rock\nRock crushes Lizard\nLizard poisons Spock\nSpock smashes Scissors\nScissors decapitates Lizard\nLizard eats Paper\nPaper disproves Spock\nSpock vaporizes Rock\n"
+            "Best out of 3 wins!\nRock crushes Scissors\nScissors cuts Paper\nPaper covers Rock\nRock crushes Lizard\nLizard poisons Spock\nSpock smashes Scissors\nScissors decapitates Lizard\nLizard eats Paper\nPaper disproves Spock\nSpock vaporizes Rock\n"
         )
+
         # choose player v player or player v ai
         user_input = input("Choose Player VS Player (PVP) or Player VS AI (PVAI) game")
         if user_input == "PVP":
             self.pvp_game()
         elif user_input == "PVAI":
             self.pvai_game()
-        # display amount of rounds (3)
 
     def determine_game_type(self):
         pass
