@@ -5,7 +5,10 @@ import random
 class AI(Player):
     def __init__(self):
         super().__init__()
+        self.random_int = 0
 
     def ai_input(self):
-        i = random.randint(0, 4)
-        # fill in with i for ai choice
+        self.random_int = random.randint(0, 4)
+
+    def ai_display(self):
+        print(self.chosen_gesture)
