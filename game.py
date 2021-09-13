@@ -68,9 +68,16 @@ class Game:
         if player1.rounds_won == 2 or player2.rounds_won == 2:
             if player1.rounds_won == 2:
                 print("Player One, YOU WIN!")
+                y_or_no = input("Play again? Enter yes or no ")
+                if y_or_no == "yes":
+                    self.reset_game(player1, player2)
+
             elif player2.rounds_won == 2:
                 print("Player Two, YOU WIN!")
-            # add message for player who won
+                y_or_no = input("Play again? Enter yes or no ")
+                if y_or_no == "yes":
+                    self.reset_game(player1, player2)
+
         else:
             if self.game_type == "PVP":
                 self.pvp_game(player1, player2)
@@ -106,3 +113,8 @@ class Game:
             player1.rounds_won += 1
         else:
             player2.rounds_won += 1
+
+    def reset_game(self, player1, player2):
+        player1.rounds_won = 0
+        player2.rounds_won = 0
+        self.determine_game_type()
