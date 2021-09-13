@@ -6,7 +6,7 @@ class Human(Player):
         super().__init__()
 
     def display_gesture_options(self):
-        print("You can choose : Rock, Paper, Scissor, Lizard, Spock")
+        print("You can choose : Rock, Paper, Scissors, Lizard, Spock")
 
     def human_input(self):
         self.chosen_gesture = input("Enter gesture")

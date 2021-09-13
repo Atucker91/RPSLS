@@ -4,7 +4,7 @@ from ai import AI
 
 class Game:
     def __init__(self):
-        self.gestures = ["Rock", "Paper", "Scissor", "Lizard", "Spock"]
+        self.gestures = ["rock", "paper", "scissors", "lizard", "spock"]
         self.game_type = ""
 
     def welcome_message(self):
@@ -53,14 +53,21 @@ class Game:
 
     def compare_gestures(self, player1, player2):
         if player1.chosen_gesture == player2.chosen_gesture:
-           pass
+            pass
         elif player1.chosen_gesture == "rock":
-            if player2.chosen_gesture == "scissors" or player2.chosen_gesture == "lizard":
-                player1.rounds_won +=1
-            else:
-                player2.rounds_won +=1
+            self.compare_rock(player1, player2)
+        elif player1.chosen_gesture == "paper":
+            self.compare_rock(player1, player2)
+        elif player1.chosen_gesture == "scissors":
+            self.compare_rock(player1, player2)
+        elif player1.chosen_gesture == "lizard":
+            self.compare_rock(player1, player2)
+        elif player1.chosen_gesture == "spock":
+            self.compare_rock(player1, player2)
+
         if player1.rounds_won == 2 or player2.rounds_won == 2:
             print("YOU WIN!")
+            # add message for player who won
         else:
             if self.game_type == "PVP":
                 self.pvp_game(player1, player2)
@@ -68,36 +75,31 @@ class Game:
                 self.pvai_game(player1, player2)
 
     def compare_rock(self, player1, player2):
-        if player1.chosen_gesture == "rock":
-            if player2.chosen_gesture == "scissors" or player2.chosen_gesture == "lizard":
-                player1.rounds_won +=1
-            else:
-                player2.rounds_won +=1
-    
+        if player2.chosen_gesture == "scissors" or player2.chosen_gesture == "lizard":
+            player1.rounds_won += 1
+        else:
+            player2.rounds_won += 1
+
     def compare_paper(self, player1, player2):
-        if player1.chosen_gesture == "paper":
-            if player2.chosen_gesture == "rock" or player2.chosen_gesture == "spock":
-                player1.rounds_won +=1
-            else:
-                player2.rounds_won +=1
-    
+        if player2.chosen_gesture == "rock" or player2.chosen_gesture == "spock":
+            player1.rounds_won += 1
+        else:
+            player2.rounds_won += 1
+
     def compare_scissors(self, player1, player2):
-        if player1.chose_gesture == "scissors":
-            if player2.chosen_gesture == "paper" or player2.chosen_gesture == "lizard":
-                player1.rounds_won+=1
-            else:
-                player2.rounds_won +=1
+        if player2.chosen_gesture == "paper" or player2.chosen_gesture == "lizard":
+            player1.rounds_won += 1
+        else:
+            player2.rounds_won += 1
 
     def compare_lizard(self, player1, player2):
-        if player1.chosen_gesture == "lizard":
-            if player2.chosen_gesture =="spock" or player2.chosen_gesture == "paper":
-                player1.rounds_won +=1
-            else:
-                player2.rounds_won +=1
+        if player2.chosen_gesture == "spock" or player2.chosen_gesture == "paper":
+            player1.rounds_won += 1
+        else:
+            player2.rounds_won += 1
 
     def compare_spock(self, player1, player2):
-        if player1.chosen_gesture == "spock":
-            if player2.chosen_gesture == "scissors" or player2.chosen_gesture == "rock":
-                player1.rounds_won +=1
-            else:
-                player2.rounds_won +=1
+        if player2.chosen_gesture == "scissors" or player2.chosen_gesture == "rock":
+            player1.rounds_won += 1
+        else:
+            player2.rounds_won += 1
