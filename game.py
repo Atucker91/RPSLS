@@ -66,3 +66,38 @@ class Game:
                 self.pvp_game(player1, player2)
             elif self.game_type == "PVAI":
                 self.pvai_game(player1, player2)
+
+    def compare_rock(self, player1, player2):
+        if player1.chosen_gesture == "rock":
+            if player2.chosen_gesture == "scissors" or player2.chosen_gesture == "lizard":
+                player1.rounds_won +=1
+            else:
+                player2.rounds_won +=1
+    
+    def compare_paper(self, player1, player2):
+        if player1.chosen_gesture == "paper":
+            if player2.chosen_gesture == "rock" or player2.chosen_gesture == "spock":
+                player1.rounds_won +=1
+            else:
+                player2.rounds_won +=1
+    
+    def compare_scissors(self, player1, player2):
+        if player1.chose_gesture == "scissors":
+            if player2.chosen_gesture == "paper" or player2.chosen_gesture == "lizard":
+                player1.rounds_won+=1
+            else:
+                player2.rounds_won +=1
+
+    def compare_lizard(self, player1, player2):
+        if player1.chosen_gesture == "lizard":
+            if player2.chosen_gesture =="spock" or player2.chosen_gesture == "paper":
+                player1.rounds_won +=1
+            else:
+                player2.rounds_won +=1
+
+    def compare_spock(self, player1, player2):
+        if player1.chosen_gesture == "spock":
+            if player2.chosen_gesture == "scissors" or player2.chosen_gesture == "rock":
+                player1.rounds_won +=1
+            else:
+                player2.rounds_won +=1
