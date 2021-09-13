@@ -67,9 +67,17 @@ class Game:
 
         if player1.rounds_won == 2 or player2.rounds_won == 2:
             if player1.rounds_won == 2:
+
                 print(f"{player1.name}, YOU HAVE DEFEATED YOUR OPPONENT!!")
+                y_or_no = input("Play again? Enter yes or no ")
+                if y_or_no == "yes":
+                    self.reset_game(player1, player2)
+
             elif player2.rounds_won == 2:
                 print(f"{player2.name}, YOU KICKED BUTT!! VICTORY!!")
+                y_or_no = input("Play again? Enter yes or no ")
+                if y_or_no == "yes":
+                    self.reset_game(player1, player2)
 
         else:
             if self.game_type == "PVP":
@@ -106,3 +114,8 @@ class Game:
             player1.rounds_won += 1
         else:
             player2.rounds_won += 1
+
+    def reset_game(self, player1, player2):
+        player1.rounds_won = 0
+        player2.rounds_won = 0
+        self.determine_game_type()
