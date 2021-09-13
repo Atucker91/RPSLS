@@ -9,14 +9,14 @@ class Human(Player):
         print("You can choose : Rock, Paper, Scissors, Lizard, Spock")
 
     def human_input(self):
-        self.chosen_gesture = input("Enter your chose gesture: ")
+        self.chosen_gesture = input("Enter your chosen gesture: ")
         while (
             self.chosen_gesture.lower() != "rock"
-            or self.chosen_gesture.lower() != "paper"
-            or self.chosen_gesture.lower() != "scissor"
-            or self.chosen_gesture.lower() != "lizard"
-            or self.chosen_gesture.lower() != "spock"
+            and self.chosen_gesture.lower() != "paper"
+            and self.chosen_gesture.lower() != "scissor"
+            and self.chosen_gesture.lower() != "lizard"
+            and self.chosen_gesture.lower() != "spock"
         ):
             self.chosen_gesture = input(
-                "!!Invalid selection!!Enter your chose gesture: "
+                "!!Invalid selection!!Enter your chosen gesture: "
             )
