@@ -57,16 +57,19 @@ class Game:
         elif player1.chosen_gesture == "rock":
             self.compare_rock(player1, player2)
         elif player1.chosen_gesture == "paper":
-            self.compare_rock(player1, player2)
+            self.compare_paper(player1, player2)
         elif player1.chosen_gesture == "scissors":
-            self.compare_rock(player1, player2)
+            self.compare_scissors(player1, player2)
         elif player1.chosen_gesture == "lizard":
-            self.compare_rock(player1, player2)
+            self.compare_lizard(player1, player2)
         elif player1.chosen_gesture == "spock":
-            self.compare_rock(player1, player2)
+            self.compare_spock(player1, player2)
 
         if player1.rounds_won == 2 or player2.rounds_won == 2:
-            print("YOU WIN!")
+            if player1.rounds_won == 2:
+                print("Player One, YOU WIN!")
+            elif player2.rounds_won == 2:
+                print("Player Two, YOU WIN!")
             # add message for player who won
         else:
             if self.game_type == "PVP":
