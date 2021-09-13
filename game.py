@@ -14,7 +14,9 @@ class Game:
         self.determine_game_type()
 
     def determine_game_type(self):
-        user_input = input("Choose whether you would like to defeat a friend: Player VS Player (PVP) or whether you would like to play against the computer: Player VS AI (PVAI) game:  ")
+        user_input = input(
+            "Choose whether you would like to defeat a friend: Player VS Player (PVP) or whether you would like to play against the computer: Player VS AI (PVAI) game:  "
+        )
         if user_input.upper() == "PVP":
             self.game_type = "PVP"
             self.pvp_game_setup()
@@ -66,8 +68,8 @@ class Game:
             self.compare_spock(player1, player2)
 
         if player1.rounds_won == 2 or player2.rounds_won == 2:
-            if player1.rounds_won == 2:
 
+            if player1.rounds_won == 2:
                 print(f"{player1.name}, YOU HAVE DEFEATED YOUR OPPONENT!!")
                 y_or_no = input("Play again? Enter yes or no ")
                 if y_or_no == "yes":

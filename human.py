@@ -10,3 +10,13 @@ class Human(Player):
 
     def human_input(self):
         self.chosen_gesture = input("Enter your chose gesture: ")
+        while (
+            self.chosen_gesture.lower() != "rock"
+            or self.chosen_gesture.lower() != "paper"
+            or self.chosen_gesture.lower() != "scissor"
+            or self.chosen_gesture.lower() != "lizard"
+            or self.chosen_gesture.lower() != "spock"
+        ):
+            self.chosen_gesture = input(
+                "!!Invalid selection!!Enter your chose gesture: "
+            )
