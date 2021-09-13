@@ -9,16 +9,16 @@ class Game:
 
     def welcome_message(self):
         print(
-            "Best out of 3 wins!\nRock crushes Scissors\nScissors cuts Paper\nPaper covers Rock\nRock crushes Lizard\nLizard poisons Spock\nSpock smashes Scissors\nScissors decapitates Lizard\nLizard eats Paper\nPaper disproves Spock\nSpock vaporizes Rock\n"
+            "Are you ready for the intensity of RPSLS?  You pick a gesture from the provided list and hope that you pick better than your opponent!! The win conditions are as follows: \nRock crushes Scissors\nScissors cuts Paper\nPaper covers Rock\nRock crushes Lizard\nLizard poisons Spock\nSpock smashes Scissors\nScissors decapitates Lizard\nLizard eats Paper\nPaper disproves Spock\nSpock vaporizes Rock\n"
         )
         self.determine_game_type()
 
     def determine_game_type(self):
-        user_input = input("Choose Player VS Player (PVP) or Player VS AI (PVAI) game")
-        if user_input == "PVP":
+        user_input = input("Choose whether you would like to defeat a friend: Player VS Player (PVP) or whether you would like to play against the computer: Player VS AI (PVAI) game:  ")
+        if user_input.upper() == "PVP":
             self.game_type = "PVP"
             self.pvp_game_setup()
-        elif user_input == "PVAI":
+        elif user_input.upper() == "PVAI":
             self.game_type = "PVAI"
             self.pvai_game_setup()
 
@@ -52,25 +52,25 @@ class Game:
         self.compare_gestures(human_player1, ai_player2)
 
     def compare_gestures(self, player1, player2):
-        if player1.chosen_gesture == player2.chosen_gesture:
+        if player1.chosen_gesture.lower() == player2.chosen_gesture:
             pass
-        elif player1.chosen_gesture == "rock":
+        elif player1.chosen_gesture.lower() == "rock":
             self.compare_rock(player1, player2)
-        elif player1.chosen_gesture == "paper":
+        elif player1.chosen_gesture.lower() == "paper":
             self.compare_paper(player1, player2)
-        elif player1.chosen_gesture == "scissors":
+        elif player1.chosen_gesture.lower() == "scissors":
             self.compare_scissors(player1, player2)
-        elif player1.chosen_gesture == "lizard":
+        elif player1.chosen_gesture.lower() == "lizard":
             self.compare_lizard(player1, player2)
-        elif player1.chosen_gesture == "spock":
+        elif player1.chosen_gesture.lower() == "spock":
             self.compare_spock(player1, player2)
 
         if player1.rounds_won == 2 or player2.rounds_won == 2:
             if player1.rounds_won == 2:
-                print("Player One, YOU WIN!")
+                print(f"{player1.name}, YOU HAVE DEFEATED YOUR OPPONENT!!")
             elif player2.rounds_won == 2:
-                print("Player Two, YOU WIN!")
-            # add message for player who won
+                print(f"{player2.name}, YOU KICKED BUTT!! VICTORY!!")
+
         else:
             if self.game_type == "PVP":
                 self.pvp_game(player1, player2)
