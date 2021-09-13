@@ -13,7 +13,7 @@ class Human(Player):
         while (
             self.chosen_gesture.lower() != "rock"
             and self.chosen_gesture.lower() != "paper"
-            and self.chosen_gesture.lower() != "scissor"
+            and self.chosen_gesture.lower() != "scissors"
             and self.chosen_gesture.lower() != "lizard"
             and self.chosen_gesture.lower() != "spock"
         ):
