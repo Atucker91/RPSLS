@@ -6,6 +6,8 @@ class Game:
     def __init__(self):
         self.gestures = ["rock", "paper", "scissors", "lizard", "spock"]
         self.game_type = ""
+        self.game_rounds = 3
+        self.rounds_to_win = 2
 
     def welcome_message(self):
         print(
@@ -32,6 +34,7 @@ class Game:
         human_player1.name = input("Enter player one name ")
         human_player2 = Human()
         human_player2.name = input("Enter player two name ")
+        self.determine_game_rounds()
         self.pvp_game(human_player1, human_player2)
 
     def pvai_game_setup(self):
@@ -39,6 +42,7 @@ class Game:
         human_player1.name = input("Enter player name ")
         ai_player2 = AI()
         ai_player2.name = "Sheldon"
+        self.determine_game_rounds()
         self.pvai_game(human_player1, ai_player2)
 
     def pvp_game(self, human_player1, human_player2):
@@ -72,11 +76,11 @@ class Game:
         elif player1.chosen_gesture.lower() == "spock":
             self.compare_spock(player1, player2)
 
-        if player1.rounds_won == 2 or player2.rounds_won == 2:
-            if player1.rounds_won == 2:
+        if player1.rounds_won == self.rounds_to_win or player2.rounds_won == self.rounds_to_win:
+            if player1.rounds_won == self.rounds_to_win:
                 print(f"{player1.name}, YOU HAVE DEFEATED YOUR OPPONENT!!")
                 self.play_again(player1, player2)
-            elif player2.rounds_won == 2:
+            elif player2.rounds_won == self.rounds_to_win:
                 print(f"{player2.name}, YOU KICKED BUTT!! VICTORY!!")
                 self.play_again(player1, player2)                
 
@@ -130,3 +134,11 @@ class Game:
         else:
             print("Please enter \"yes\" or \"no\"")
             self.play_again(player1, player2)
+
+    def determine_game_rounds(self):
+        self.game_rounds = int(input("Please enter how many rounds of RPSLS you would like to play.  Remember, it has to be an odd number so that someone can win!"))
+        if self.game_rounds%2== 1:
+            self.rounds_to_win = (self.game_rounds +1)/2
+        else:
+            print("Please input an odd number!")
+            self.determine_game_rounds()
