@@ -21,6 +21,9 @@ class Game:
         elif user_input.upper() == "PVAI":
             self.game_type = "PVAI"
             self.pvai_game_setup()
+        else:
+            print("Please enter either \"PVP\" or \"PVAI\"")
+            self.determine_game_type()
 
     def pvp_game_setup(self):
         human_player1 = Human()
@@ -37,8 +40,10 @@ class Game:
         self.pvai_game(human_player1, ai_player2)
 
     def pvp_game(self, human_player1, human_player2):
+        print(f"{human_player1.name}, please select your gesture with which to defeat {human_player2.name}.  Make sure they close their eyes before you pick!")
         human_player1.display_gesture_options()
         human_player1.human_input()
+        print(f"{human_player2.name}, what gesture do you retaliate with?")
         human_player2.display_gesture_options()
         human_player2.human_input()
         self.compare_gestures(human_player1, human_player2)
@@ -67,17 +72,11 @@ class Game:
 
         if player1.rounds_won == 2 or player2.rounds_won == 2:
             if player1.rounds_won == 2:
-
                 print(f"{player1.name}, YOU HAVE DEFEATED YOUR OPPONENT!!")
-                y_or_no = input("Play again? Enter yes or no ")
-                if y_or_no == "yes":
-                    self.reset_game(player1, player2)
-
+                self.play_again(player1, player2)
             elif player2.rounds_won == 2:
                 print(f"{player2.name}, YOU KICKED BUTT!! VICTORY!!")
-                y_or_no = input("Play again? Enter yes or no ")
-                if y_or_no == "yes":
-                    self.reset_game(player1, player2)
+                self.play_again(player1, player2)                
 
         else:
             if self.game_type == "PVP":
@@ -119,3 +118,13 @@ class Game:
         player1.rounds_won = 0
         player2.rounds_won = 0
         self.determine_game_type()
+
+    def play_again(self, player1, player2):
+        y_or_no = input("Play again? Enter yes or no ")
+        if y_or_no.lower() == "yes":
+            self.reset_game(player1, player2)
+        elif y_or_no.lower() == "no":
+            print("We hope you enjoyed this epic game of RPSLS.  Consider playing again in the future!")
+        else:
+            print("Please enter \"yes\" or \"no\"")
+            self.play_again(player1, player2)

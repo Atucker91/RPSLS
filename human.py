@@ -9,4 +9,4 @@ class Human(Player):
         print("You can choose : Rock, Paper, Scissors, Lizard, Spock")
 
     def human_input(self):
-        self.chosen_gesture = input("Enter your chose gesture: ")
+        self.chosen_gesture = input("Enter your chosen gesture: ")
