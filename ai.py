@@ -11,4 +11,4 @@ class AI(Player):
         self.random_int = random.randint(0, 4)
 
     def ai_display(self):
-        print("The AI chose:", self.chosen_gesture)
+        print("\nThe AI chose:", self.chosen_gesture)

@@ -26,14 +26,14 @@ class Game:
             self.game_type = "PVAI"
             self.pvai_game_setup()
         else:
-            print("Please enter either \"PVP\" or \"PVAI\"")
+            print('Please enter either "PVP" or "PVAI"')
             self.determine_game_type()
 
     def pvp_game_setup(self):
         human_player1 = Human()
-        human_player1.name = input("Enter player one name ")
+        human_player1.name = input("\nEnter player one name ")
         human_player2 = Human()
-        human_player2.name = input("Enter player two name ")
+        human_player2.name = input("\nEnter player two name ")
         self.determine_game_rounds()
         self.pvp_game(human_player1, human_player2)
 
@@ -46,10 +46,12 @@ class Game:
         self.pvai_game(human_player1, ai_player2)
 
     def pvp_game(self, human_player1, human_player2):
-        print(f"{human_player1.name}, please select your gesture with which to defeat {human_player2.name}.  Make sure they close their eyes before you pick!")
+        print(
+            f"\n{human_player1.name}, please select your gesture with which to defeat {human_player2.name}.  Make sure they close their eyes before you pick!"
+        )
         human_player1.display_gesture_options()
         human_player1.human_input()
-        print(f"{human_player2.name}, what gesture do you retaliate with?")
+        print(f"\n{human_player2.name}, what gesture do you retaliate with?")
         human_player2.display_gesture_options()
         human_player2.human_input()
         self.compare_gestures(human_player1, human_player2)
@@ -76,13 +78,17 @@ class Game:
         elif player1.chosen_gesture.lower() == "spock":
             self.compare_spock(player1, player2)
 
+        print(
+            f"\nAfter round score is now: \n {player1.name}:{player1.rounds_won}, {player2.name}:{player2.rounds_won}"
+        )
+
         if player1.rounds_won == self.rounds_to_win or player2.rounds_won == self.rounds_to_win:
             if player1.rounds_won == self.rounds_to_win:
-                print(f"{player1.name}, YOU HAVE DEFEATED YOUR OPPONENT!!")
+                print(f"\n{player1.name}, YOU HAVE DEFEATED YOUR OPPONENT!!")
                 self.play_again(player1, player2)
             elif player2.rounds_won == self.rounds_to_win:
-                print(f"{player2.name}, YOU KICKED BUTT!! VICTORY!!")
-                self.play_again(player1, player2)                
+                print(f"\n{player2.name}, YOU KICKED BUTT!! VICTORY!!")
+                self.play_again(player1, player2)
 
         else:
             if self.game_type == "PVP":
@@ -130,9 +136,11 @@ class Game:
         if y_or_no.lower() == "yes":
             self.reset_game(player1, player2)
         elif y_or_no.lower() == "no":
-            print("We hope you enjoyed this epic game of RPSLS.  Consider playing again in the future!")
+            print(
+                "\nWe hope you enjoyed this epic game of RPSLS.  Consider playing again in the future!"
+            )
         else:
-            print("Please enter \"yes\" or \"no\"")
+            print('Please enter "yes" or "no"')
             self.play_again(player1, player2)
 
     def determine_game_rounds(self):
@@ -142,3 +150,4 @@ class Game:
         else:
             print("Please input an odd number!")
             self.determine_game_rounds()
+
