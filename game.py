@@ -14,7 +14,9 @@ class Game:
         self.determine_game_type()
 
     def determine_game_type(self):
-        user_input = input("Choose whether you would like to defeat a friend: Player VS Player (PVP) or whether you would like to play against the computer: Player VS AI (PVAI) game:  ")
+        user_input = input(
+            "Choose whether you would like to defeat a friend: Player VS Player (PVP) or whether you would like to play against the computer: Player VS AI (PVAI) game:  "
+        )
         if user_input.upper() == "PVP":
             self.game_type = "PVP"
             self.pvp_game_setup()
