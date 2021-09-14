@@ -82,7 +82,10 @@ class Game:
             f"\nAfter round score is now: \n {player1.name}:{player1.rounds_won}, {player2.name}:{player2.rounds_won}"
         )
 
-        if player1.rounds_won == self.rounds_to_win or player2.rounds_won == self.rounds_to_win:
+        if (
+            player1.rounds_won == self.rounds_to_win
+            or player2.rounds_won == self.rounds_to_win
+        ):
             if player1.rounds_won == self.rounds_to_win:
                 print(f"\n{player1.name}, YOU HAVE DEFEATED YOUR OPPONENT!!")
                 self.play_again(player1, player2)
@@ -97,31 +100,46 @@ class Game:
                 self.pvai_game(player1, player2)
 
     def compare_rock(self, player1, player2):
-        if player2.chosen_gesture == "scissors" or player2.chosen_gesture == "lizard":
+        if (
+            player2.chosen_gesture.lower() == "scissors"
+            or player2.chosen_gesture.lower() == "lizard"
+        ):
             player1.rounds_won += 1
         else:
             player2.rounds_won += 1
 
     def compare_paper(self, player1, player2):
-        if player2.chosen_gesture == "rock" or player2.chosen_gesture == "spock":
+        if (
+            player2.chosen_gesture.lower() == "rock"
+            or player2.chosen_gesture.lower() == "spock"
+        ):
             player1.rounds_won += 1
         else:
             player2.rounds_won += 1
 
     def compare_scissors(self, player1, player2):
-        if player2.chosen_gesture == "paper" or player2.chosen_gesture == "lizard":
+        if (
+            player2.chosen_gesture.lower() == "paper"
+            or player2.chosen_gesture.lower() == "lizard"
+        ):
             player1.rounds_won += 1
         else:
             player2.rounds_won += 1
 
     def compare_lizard(self, player1, player2):
-        if player2.chosen_gesture == "spock" or player2.chosen_gesture == "paper":
+        if (
+            player2.chosen_gesture.lower() == "spock"
+            or player2.chosen_gesture.lower() == "paper"
+        ):
             player1.rounds_won += 1
         else:
             player2.rounds_won += 1
 
     def compare_spock(self, player1, player2):
-        if player2.chosen_gesture == "scissors" or player2.chosen_gesture == "rock":
+        if (
+            player2.chosen_gesture.lower() == "scissors"
+            or player2.chosen_gesture.lower() == "rock"
+        ):
             player1.rounds_won += 1
         else:
             player2.rounds_won += 1
@@ -144,10 +162,13 @@ class Game:
             self.play_again(player1, player2)
 
     def determine_game_rounds(self):
-        self.game_rounds = int(input("Please enter how many rounds of RPSLS you would like to play.  Remember, it has to be an odd number so that someone can win!"))
-        if self.game_rounds%2== 1:
-            self.rounds_to_win = (self.game_rounds +1)/2
+        self.game_rounds = int(
+            input(
+                "Please enter how many rounds of RPSLS you would like to play.  Remember, it has to be an odd number so that someone can win!"
+            )
+        )
+        if self.game_rounds % 2 == 1:
+            self.rounds_to_win = (self.game_rounds + 1) / 2
         else:
             print("Please input an odd number!")
             self.determine_game_rounds()
-
